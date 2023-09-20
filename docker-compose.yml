@@ -1,0 +1,29 @@
+version: "3"
+
+
+services:
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  db:
+    image: postgres
+    restart: always
+    container_name: kjoy_postgres
+    environment:
+      POSTGRES_PASSWORD: 65b146c4-854a-40c9-acaf-fbe66fab88f2
+      POSTGRES_USER: KjoyGeneralPGUser
+      POSTGRES_DB: KjoyGeneralDB
+      POSTGRES_INITDB_ARGS: "-A md5"
+  web:
+    build: ./kjoy
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./kjoy/:/usr/src/kjoy/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+      - redis

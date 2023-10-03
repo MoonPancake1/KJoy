@@ -4,17 +4,21 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.views import View
 from .forms import *
 
 
 def test(request):
-    return HttpResponse("It's pages need for testing request!")
+    """
+    Тестовые запросы
+    """
+    context = {}
+    
+    return render(request, 'users/test.html', context=context)
 
 
-@login_required
 def personal_account(request):
     """
     Отображение личного кабинета
@@ -44,6 +48,54 @@ def personal_account_edit(request):
 
     return render(request, 'users/account/personal_account_edit.html',
                   context=context)
+    
+
+# ====================================================
+#  Функции для предоставления информации пользователю
+# ====================================================
+def main(request):
+    """
+    Отображение главной страницы
+    """
+    context = {}
+
+    return render(request, 'users/index.html', context=context)
+
+
+def password_generate(request):
+    """
+    Отображение страницы для генерации паролей
+    """
+    context = {}
+
+    return render(request, 'users/password_generate.html', context=context)
+
+
+def price(request):
+    """
+    Отображение страницы с тарифами
+    """
+    context = {}
+
+    return render(request, 'users/price.html', context=context)
+
+
+def faqs(request):
+    """
+    Отображение страницы faq
+    """
+    context = {}
+
+    return render(request, 'users/faqs.html', context=context)
+
+
+def about(request):
+    """
+    Отображение страницы с информацией о нас
+    """
+    context = {}
+
+    return render(request, 'users/about.html', context=context)
 
 
 # =========================================

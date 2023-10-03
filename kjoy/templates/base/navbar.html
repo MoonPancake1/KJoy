@@ -1,0 +1,25 @@
+{% load static %}
+
+
+<header
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+    <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none pt-2">
+            <img width="48" height="48" role="img" src="{% static 'main/logoKJoy.png' %}"
+                alt="">
+        </a>
+    </div>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'main' %}" class="nav-link px-2">Главная</a></li>
+        <li><a href="{% url 'password_generate' %}" class="nav-link px-2">Генератор паролей</a></li>
+        <li><a href="{% url 'price' %}" class="nav-link px-2">Тарифы</a></li>
+        <li><a href="{% url 'faqs' %}" class="nav-link px-2">FAQs</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link px-2">О нас</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+        <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Войти</a>
+        <a href="{% url 'register' %}" class="btn btn-primary">Регистрация</a>
+    </div>
+</header>
